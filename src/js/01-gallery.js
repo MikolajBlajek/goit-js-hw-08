@@ -1,35 +1,28 @@
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-import { galleryItems } from './gallery-items.js';
+import simpleLightbox from "simplelightbox"; 
+import "simplelightbox/dist/simple-lightbox.css" ;
+import {galleryItems} from "./gallery-items"; 
 
-// Change code below this line
+const galleryList = document.querySelector("#gallery"); 
+ 
+function generateGaleryList() { 
+    galleryItems.forEach((item) => {
+        const galleryItems = document.createElement("li"); 
+        galleryItems.classList.add("gallery__item"); 
+         
+        const link = document.createElement("a"); 
+        link.classList.add("galler__link"); 
+        link.href = item.original; 
+         
+        const image = document.createElement("img"); 
+        image.classList.add("galler__image"); 
+        image.src = item.preview; 
+        image.alt = item.description; 
 
-const boxGalleryItems = document.querySelector("ul.gallery");
-
-boxGalleryItems.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    if (event.target.tagName === 'IMG') {
-        const source = event.target.dataset.source;
-        const imagesLightbox = new SimpleLightbox(
-            `<img src="${source}" alt="${event.target.alt}"/>`
-        );
-        imagesLightbox.show();
-    }
-});
-
-const images = galleryItems.map((item) => {
-    return `
-        <div class="item__gallery">
-            <a class="link__gallery" href="${item.original}">
-                <img
-                    class="images__gallery"
-                    src="${item.preview}"
-                    data-source="${item.original}"
-                    alt="${item.description}"
-                />
-            </a>
-        </div>`;
-});
-
-boxGalleryItems.insertAdjacentHTML('beforeend', images.join(""));
+        galleryList.appendChild(galleryItems); 
+        galleryItems.appendChild(link); 
+        link.appendChild(image);
+    })
+}  
+generateGaleryList(); 
+ 
+new simpleLightbox('.gallery a')

@@ -22,7 +22,6 @@ form.addEventListener('submit', (event) => {
   };
   console.log('Form Data:', formData);
 
-
   localStorage.removeItem('feedback-form-state');
 
   emailInput.value = '';
