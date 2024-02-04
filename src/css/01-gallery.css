@@ -11,7 +11,8 @@
   grid-gap: 12px;
   justify-content: center;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
+  list-style-type: none;
 }
 
 .gallery__item { 

@@ -16,6 +16,11 @@ window.addEventListener('load', () => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  if (emailInput.value === '' || messageInput.value === '') {
+    alert("Wszystkie pola muszą być wypełnione!");
+    return; 
+  }
+
   const formData = {
     email: emailInput.value,
     message: messageInput.value,
